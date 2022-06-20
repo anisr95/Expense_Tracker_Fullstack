@@ -1,0 +1,48 @@
+import dotenv from 'dotenv';
+import cors from 'cors';
+import express from 'express';
+import mongoose from 'mongoose';
+import Expense from './models/Expense.js';
+import expensesRoute from './routes/expenses.js'
+import userRoute from './routes/user.js'
+import authRoute from './routes/auth.js'
+import User from './models/User.js'
+
+const app = express();
+
+// const dbURL = process.env.DB_URL || "moongodb://localhost:27017/ExpenseTrackerDB";
+
+mongoose.connect("mongodb://localhost:27017/ExpenseTrackerDB").then(() => console.log("Mongo Server Connected"));
+
+// const myExpense = new Expense({
+//     item: "iPhone",
+//     amount: 1200,
+//     date: new Date()
+// });
+
+// await myExpense.save();
+
+// const newUser = new User({
+//     username: "Sina",
+//     password: "sina123"
+// })
+
+// await newUser.save();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+// app.use(express.bodyParser());
+
+app.use('/expenses', expensesRoute);
+app.use('user', userRoute);
+app.use('/auth', authRoute);
+
+app.get('/login', (req, res, next) => {
+    res.send("Login Page");
+})
+
+
+app.listen(3001, () => {
+    console.log("Server running on port 3001");
+});
