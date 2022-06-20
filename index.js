@@ -38,6 +38,10 @@ app.use('/expenses', expensesRoute);
 app.use('user', userRoute);
 app.use('/auth', authRoute);
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+}
+
 app.get('/login', (req, res, next) => {
     res.send("Login Page");
 })
