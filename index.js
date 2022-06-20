@@ -14,7 +14,7 @@ const app = express();
 const dbURL = process.env.DB_URL || "moongodb://localhost:27017/ExpenseTrackerDB";
 
 
-mongoose.connect("mongodb+srv://admin:3GCDlQdjVRL6RJc9@cluster0.b4n7z.mongodb.net/?retryWrites=true&w=majority").then(() => console.log("Mongo Server Connected")).catch((error) => console.log(error));
+mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch((error) => console.log(error));
 
 // const myExpense = new Expense({
 //     item: "iPhone",
