@@ -7,12 +7,13 @@ import expensesRoute from './routes/expenses.js'
 import userRoute from './routes/user.js'
 import authRoute from './routes/auth.js'
 import User from './models/User.js'
-
+dotenv.config();
 const app = express();
 
-// const dbURL = process.env.DB_URL || "moongodb://localhost:27017/ExpenseTrackerDB";
+const dbURL = process.env.DB_URL || "moongodb://localhost:27017/ExpenseTrackerDB";
 
-mongoose.connect("mongodb://localhost:27017/ExpenseTrackerDB").then(() => console.log("Mongo Server Connected"));
+
+mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch((error) => console.log(error));
 
 // const myExpense = new Expense({
 //     item: "iPhone",
