@@ -7,6 +7,7 @@ import expensesRoute from './routes/expenses.js'
 import userRoute from './routes/user.js'
 import authRoute from './routes/auth.js'
 import User from './models/User.js'
+import path from 'path'
 dotenv.config();
 const app = express();
 
@@ -30,6 +31,7 @@ mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch(
 
 // await newUser.save();
 
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -39,14 +41,18 @@ app.use('/expenses', expensesRoute);
 app.use('user', userRoute);
 app.use('/auth', authRoute);
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'))
-}
 
 app.get('/login', (req, res, next) => {
     res.send("Login Page");
 })
 
+// __dirname = path.resolve(path.dirname(''));
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('/client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve('client/build/index.html'));
+    })
+}
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
