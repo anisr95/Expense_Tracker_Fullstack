@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import Expense from './models/Expense.js';
 import expensesRoute from './routes/expenses.js'
 import userRoute from './routes/user.js'
-import authRoute from './routes/auth.js'
+// import authRoute from './routes/auth.js'
 import User from './models/User.js'
 import path from 'path'
 dotenv.config();
@@ -39,7 +39,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/expenses', expensesRoute);
 app.use('user', userRoute);
-app.use('/auth', authRoute);
+// app.use('/auth', authRoute);
 
 
 app.get('/login', (req, res, next) => {
