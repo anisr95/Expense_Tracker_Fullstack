@@ -7,9 +7,16 @@ import expensesRoute from './routes/expenses.js'
 import userRoute from './routes/user.js'
 // import authRoute from './routes/auth.js'
 import User from './models/User.js'
-import path from 'path'
+
 dotenv.config();
 const app = express();
+
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 const dbURL = process.env.DB_URL || "moongodb://localhost:27017/ExpenseTrackerDB";
 
@@ -31,6 +38,8 @@ mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch(
 
 // await newUser.save();
 
+console.log('dirname: ' + __dirname);
+
 
 app.use(cors());
 app.use(express.json());
@@ -48,9 +57,9 @@ app.get('/login', (req, res, next) => {
 
 // __dirname = path.resolve(path.dirname(''));
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('/client/build'));
+    app.use(express.static(path.resolve(__dirname, "./client/build")));
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve('./client/build/index.html'));
+        res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
     })
 }
 const port = process.env.PORT || 3001;
