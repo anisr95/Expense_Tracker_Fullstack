@@ -39,7 +39,6 @@ mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch(
 
 // await newUser.save();
 
-console.log('dirname: ' + __dirname);
 
 
 app.use(cors());
