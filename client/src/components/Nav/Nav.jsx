@@ -25,8 +25,8 @@ const Nav = () => {
               <Button href="/" color="inherit">
                 Home
               </Button>
-              <Button href="/expenses" color="inherit">
-                Expenses
+              <Button color="inherit">
+                <Link to="/expenses">Expenses</Link>
               </Button>
               <Button href="#" color="inherit">
                 Login
