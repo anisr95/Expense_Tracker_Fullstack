@@ -209,7 +209,7 @@ const Expense = () => {
                           color: "green",
                         },
                       }}
-                      to={`expenses/${expense._id}`}
+                      to={`/${expense._id}`}
                     >
                       <EditIcon />
                     </IconButton>
