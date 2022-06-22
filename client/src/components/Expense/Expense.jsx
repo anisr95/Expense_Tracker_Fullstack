@@ -31,7 +31,7 @@ const Expense = () => {
 
   const deleteExpense = async (id) => {
     console.log("Deletiiiing");
-    await axios.delete("http://localhost:3001/expenses/" + id);
+    await axios.delete("/expenses/" + id);
     window.location.reload();
   };
 
@@ -43,11 +43,6 @@ const Expense = () => {
     console.log(expenses.data);
 
     // return expenses;
-  };
-
-  const editExpense = async (link, expense) => {
-    console.log(link, expense);
-    await axios.get("http://localhost:3001/" + link, expense);
   };
 
   useEffect(() => {

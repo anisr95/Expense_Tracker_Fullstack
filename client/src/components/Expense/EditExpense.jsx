@@ -37,7 +37,7 @@ const EditExpense = (props) => {
   };
 
   const getCategories = async () => {
-    const expenses = await axios.get("http://localhost:3001/expenses");
+    const expenses = await axios.get("/expenses");
     const categories = [];
     for (let i = 0; i < expenses.data.length; i++) {
       // console.log("Category #" + i);
@@ -62,10 +62,7 @@ const EditExpense = (props) => {
 
     console.log("in submitting" + params.id);
     console.log("Editting");
-    axios.put(
-      `http://localhost:3001/expenses/${params.id}/edit`,
-      editedProduct
-    );
+    axios.put(`/expenses/${params.id}/edit`, editedProduct);
 
     // setItem("");
     // setAmount(0);
