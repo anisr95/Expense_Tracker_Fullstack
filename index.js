@@ -4,9 +4,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import Expense from './models/Expense.js';
 import expensesRoute from './routes/expenses.js'
-import userRoute from './routes/user.js'
+// import userRoute from './routes/user.js'
 // import authRoute from './routes/auth.js'
-import User from './models/User.js'
+// import User from './models/User.js'
 
 dotenv.config();
 const app = express();
@@ -47,7 +47,7 @@ app.use(express.urlencoded({extended: true}));
 // app.use(express.bodyParser());
 
 app.use('/expenses', expensesRoute);
-app.use('user', userRoute);
+// app.use('user', userRoute);
 // app.use('/auth', authRoute);
 
 
