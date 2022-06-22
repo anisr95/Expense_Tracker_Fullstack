@@ -26,7 +26,7 @@ const EditExpense = (props) => {
   const [expense, setExpense] = useState({});
 
   const getOneExpense = async (id) => {
-    const oneExpense = await axios.get("http://localhost:3001/expenses/" + id);
+    const oneExpense = await axios.get("/expenses/" + id);
     setExpense(oneExpense.data);
     setItem(oneExpense.data.item);
     setAmount(oneExpense.data.amount);
