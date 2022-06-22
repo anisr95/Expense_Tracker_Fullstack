@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -82,7 +83,8 @@ const Expense = () => {
         }}
       >
         <Button
-          href="/expenses/new"
+          component={Link}
+          to="/expenses/new"
           variant="contained"
           sx={{ marginLeft: "2rem" }}
         >

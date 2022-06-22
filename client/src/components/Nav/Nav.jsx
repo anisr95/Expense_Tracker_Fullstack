@@ -22,12 +22,17 @@ const Nav = () => {
               <Typography variant="h5" sx={{ flexGrow: 1 }}>
                 Expense Tracker
               </Typography>
-              <Button href="/" color="inherit">
+              <Button component={Link} to="/" color="inherit">
                 Home
               </Button>
-              <Link to="/expenses">
-                <Button color="inherit">Expenses</Button>
-              </Link>
+              <Button component={Link} to="/expenses" color="inherit">
+                Expenses
+              </Button>
+              {/* <Link style={{ textDecoration: "none" }} to="/expenses">
+                <Button sx={{ color: "white" }} color="inherit">
+                  Expenses
+                </Button>
+              </Link> */}
               <Button href="#" color="inherit">
                 Login
               </Button>

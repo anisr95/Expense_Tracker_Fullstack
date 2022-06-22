@@ -28,7 +28,7 @@ const NewExpense = () => {
     console.log(typeof date);
 
     console.log("Submiting");
-    axios.post("/expenses/new", newProduct);
+    axios.post("http://localhost:3001/expenses/new", newProduct);
 
     setItem("");
     setAmount(0);
@@ -38,7 +38,7 @@ const NewExpense = () => {
   };
 
   const getCategories = async () => {
-    const expenses = await axios.get("/expenses");
+    const expenses = await axios.get("http://localhost:3001/expenses");
     const categories = [];
     for (let i = 0; i < expenses.data.length; i++) {
       // console.log("Category #" + i);
