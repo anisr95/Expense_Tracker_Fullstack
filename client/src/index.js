@@ -16,6 +16,7 @@ root.render(
       <Route path='/expenses' element={<Expense />} />
       <Route path='/expenses/:id' element={<EditExpense />} />
       <Route path='/expenses/new' element={<NewExpense />} />
+      
 
     </Routes>
 
