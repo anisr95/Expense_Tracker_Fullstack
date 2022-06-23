@@ -11,11 +11,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run clean && npm run build && npm run deploy",
-    "server": "node index.js",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "nodemon index.js",
     "client": "cd client && npm run start",
     "devStart": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+    "start": "node index.js"
 
   },
   
