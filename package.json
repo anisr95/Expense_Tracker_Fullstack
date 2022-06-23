@@ -13,10 +13,12 @@
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy",
     "server": "node index.js",
+    "client": "cd client && npm run start",
     "devStart": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+    "start": "npm run client && npm run server"
 
   },
+  
   "author": "",
   "license": "ISC",
   "dependencies": {

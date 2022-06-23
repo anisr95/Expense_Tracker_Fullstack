@@ -209,7 +209,7 @@ const Expense = () => {
                           color: "green",
                         },
                       }}
-                      href={`expenses/${expense._id}`}
+                      href={`/${expense._id}`}
                     >
                       <EditIcon />
                     </IconButton>
