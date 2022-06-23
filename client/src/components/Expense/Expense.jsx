@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -209,9 +209,11 @@ const Expense = () => {
                           color: "green",
                         },
                       }}
-                      href={`expenses/${expense._id}`}
+                      // href={`expenses/${expense._id}`}
                     >
-                      <EditIcon />
+                      <NavLink to={`expenses/${expense._id}`}>
+                        <EditIcon />
+                      </NavLink>
                     </IconButton>
                   </TableCell>
                   <TableCell>
