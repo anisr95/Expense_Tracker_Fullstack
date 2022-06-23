@@ -10,16 +10,8 @@ import EditExpense from './components/Expense/EditExpense'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <Routes>
-      <Route path='/' element={<App />} />
-      <Route path='/navbar' element={<Nav />} />
-      <Route path='/expenses' element={<Expense />} />
-      <Route path='/expenses/:id' element={<EditExpense />} />
-      <Route path='/expenses/new' element={<NewExpense />} />
-      
-
-    </Routes>
-
-  </Router>
+    <App />
+  </Router>,
+  document.getElementById("root")
   
 );
