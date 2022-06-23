@@ -15,7 +15,7 @@
     "server": "node index.js",
     "client": "cd client && npm run start",
     "devStart": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "start": "npm run client && npm run server"
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
 
   },
   
