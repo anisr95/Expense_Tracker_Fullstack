@@ -203,13 +203,13 @@ const Expense = () => {
                   </TableCell>
                   <TableCell>
                     <IconButton
-                      component={Link}
+                      // component={Link}
                       sx={{
                         "&:hover": {
                           color: "green",
                         },
                       }}
-                      to={`expenses/${expense._id}`}
+                      href={`expenses/${expense._id}`}
                     >
                       <EditIcon />
                     </IconButton>
