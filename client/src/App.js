@@ -7,45 +7,44 @@ import Nav from './components/Nav/Nav';
 import Expense from './components/Expense/Expense'
 import NewExpense from './components/Expense/NewExpense'
 import EditExpense from './components/Expense/EditExpense'
+import HomePage from './components/HomePage';
 
 function App() {
   return (
-    // <Routes>
-    <div>
-      <Nav />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: 'column',
-          justifyContent: "center",
-          marginLeft: '3rem',
-          marginTop: '2rem'
-        }}>
-        <Typography variant='h2' color='primary' gutterBottom>Expense Tracker Project</Typography>
-        <Typography variant='h6' color='secondary'>This is a CRUD (Create, Read, Update, Delete) app, built using MERN stack (MondoDB, Express, React, and Node)</Typography>
-        <Typography gutterBottom variant='h6' color='secondary'>Go to Expenses tab to start</Typography>
-        <Typography variant='p' color='secondary.light'>This project is still not finished, please come back after a few days to see the latest version</Typography>
-        <Typography variant='p' color='secondary.light'>Future updates: Expense Tracker Graph, Login/Logout and user Authentication, Ability to create profile, Becoming more responsive for Mobile and Tablet use, and many more</Typography>
-
-        </Box>
-
-        <Router>
-    <Routes>
-      <Route path='/' element={<App />} />
-      <Route path='/navbar' element={<Nav />} />
-      <Route path='/expenses' element={<Expense />} />
-      <Route path='/expenses/:id' element={<EditExpense />} />
-      <Route path='/expenses/new' element={<NewExpense />} />
-      
-
-    </Routes>
-
-  </Router>
-
-
-    </div>
-    // </Routes>
+    <>     
+    <Nav />
+  <Routes>
+    <Route path='/' element={<HomePage />}/>
+    <Route path='/expenses' element={<Expense />} />
+    <Route path='/expenses/:id' element={<EditExpense />} />
+    <Route path='/expenses/new' element={<NewExpense />} />
+  </Routes>
+  </>
   );
 }
 
 export default App;
+
+
+//  <Routes>
+  
+    // {/* <div> */}
+      // {/* <Nav /> */}
+
+
+     
+
+        
+      {/* <Route path='/' element={<App />} /> */}
+      // <Route path='/navbar' element={<Nav />} />
+      // <Route path='/expenses' element={<Expense />} />
+      // <Route path='/expenses/:id' element={<EditExpense />} />
+      // <Route path='/expenses/new' element={<NewExpense />} />
+      
+
+
+
+
+
+    {/* </div> */}
+    //  </Routes> 

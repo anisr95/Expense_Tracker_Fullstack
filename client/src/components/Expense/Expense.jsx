@@ -37,7 +37,7 @@ const Expense = () => {
 
   const getAllExpenses = async () => {
     console.log("I was ran");
-    const expenses = await axios.get("/expenses");
+    const expenses = await axios.get("http://localhost:3001/expenses");
     setExpenses(expenses.data);
     console.log(expenses);
     console.log(expenses.data);
@@ -53,7 +53,7 @@ const Expense = () => {
 
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <Box
         sx={{
           display: "flex",
@@ -209,11 +209,11 @@ const Expense = () => {
                           color: "green",
                         },
                       }}
-                      // href={`expenses/${expense._id}`}
+                      href={`expenses/${expense._id}`}
                     >
-                      <NavLink to={`expenses/${expense._id}`}>
-                        <EditIcon />
-                      </NavLink>
+                      {/* <NavLink to={`expenses/${expense._id}`}> */}
+                      <EditIcon />
+                      {/* </NavLink> */}
                     </IconButton>
                   </TableCell>
                   <TableCell>

@@ -59,7 +59,7 @@ const NewExpense = () => {
   }, []);
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <Box
         sx={{
           height: "100vh",
@@ -107,7 +107,7 @@ const NewExpense = () => {
           <TextField
             label="Date"
             type="date"
-            defaultValue={new Date()}
+            // defaultValue={new Date()}
             onChange={(e) => setDate(e.target.value)}
             fullWidth
             value={date}

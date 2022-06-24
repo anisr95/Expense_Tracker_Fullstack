@@ -80,7 +80,7 @@ const EditExpense = (props) => {
 
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <Box
         sx={{
           height: "100vh",
