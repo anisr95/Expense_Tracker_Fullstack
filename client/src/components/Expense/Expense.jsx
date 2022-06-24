@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
-import { Link, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 import {
   Button,
   Card,
@@ -29,10 +29,13 @@ import Nav from "../Nav/Nav";
 const Expense = () => {
   const [expenses, setExpenses] = useState([{}]);
 
+  const navigate = useNavigate();
+
   const deleteExpense = async (id) => {
     console.log("Deletiiiing");
     await axios.delete("/expenses/" + id);
-    window.location.reload();
+    // window.location.reload();
+    navigate(0);
   };
 
   const getAllExpenses = async () => {
