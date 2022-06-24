@@ -34,8 +34,10 @@ const Expense = () => {
   const deleteExpense = async (id) => {
     console.log("Deletiiiing");
     await axios.delete("/expenses/" + id);
+    const filteredExpenses = expenses.filter((expense) => expense._id !== id);
+    setExpenses(filteredExpenses);
     // window.location.reload();
-    navigate(0);
+    // navigate(0);
   };
 
   const getAllExpenses = async () => {
