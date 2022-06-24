@@ -203,16 +203,19 @@ const Expense = () => {
                   </TableCell>
                   <TableCell>
                     <IconButton
-                      // component={Link}
+                      component={Link}
                       sx={{
                         "&:hover": {
                           color: "green",
                         },
                       }}
-                      href={`expenses/${expense._id}`}
+                      to={`./${expense._id}`}
+                      // href={`expenses/${expense._id}`}
                     >
                       {/* <NavLink to={`expenses/${expense._id}`}> */}
+                      {/* <Link to={`./${expense._id}`}> */}
                       <EditIcon />
+                      {/* </Link> */}
                       {/* </NavLink> */}
                     </IconButton>
                   </TableCell>
