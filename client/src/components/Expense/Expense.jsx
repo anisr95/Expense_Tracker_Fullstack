@@ -37,7 +37,7 @@ const Expense = () => {
 
   const getAllExpenses = async () => {
     console.log("I was ran");
-    const expenses = await axios.get("http://localhost:3001/expenses");
+    const expenses = await axios.get("/expenses");
     setExpenses(expenses.data);
     console.log(expenses);
     console.log(expenses.data);
