@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Autocomplete,
   Button,
@@ -19,7 +20,9 @@ const NewExpense = () => {
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState({});
 
-  const submitHandler = () => {
+  const navigate = useNavigate();
+
+  const submitHandler = async () => {
     const newProduct = {
       item,
       amount,
@@ -29,13 +32,15 @@ const NewExpense = () => {
     console.log(typeof date);
 
     console.log("Submiting");
-    axios.post("/expenses/new", newProduct);
+    await axios.post("/expenses/new", newProduct);
 
     setItem("");
     setAmount(0);
     setDate("");
     setCategory("");
     setCategories("");
+
+    navigate("/expenses");
   };
 
   const getCategories = async () => {
