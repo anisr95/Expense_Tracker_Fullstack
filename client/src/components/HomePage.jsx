@@ -19,7 +19,7 @@ const HomePage = () => {
         </Typography>
         <Typography variant="h6" color="secondary">
           This is a CRUD (Create, Read, Update, Delete) app, built using MERN
-          stack (MondoDB, Express, React, and Node)
+          stack (MongoDB, Express, React, and Node)
         </Typography>
         <Typography gutterBottom variant="h6" color="secondary">
           Go to Expenses tab to start

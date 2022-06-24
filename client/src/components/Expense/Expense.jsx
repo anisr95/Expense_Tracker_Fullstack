@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import React from "react";
 import Nav from "../Nav/Nav";
 
@@ -59,47 +59,48 @@ const Expense = () => {
   return (
     <>
       {/* <Nav /> */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "2rem",
-          alignItems: "center",
-          //   border: "2px solid blue",
-        }}
-      >
-        <Typography letterSpacing={3} variant="h2" color="secondary.light">
-          All Expenses in a Glance
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          // border: "1px solid red",
-          width: "1100px",
-          margin: "1rem auto",
-        }}
-      >
-        <Button
-          component={Link}
-          to="/expenses/new"
-          variant="contained"
-          sx={{ marginLeft: "2rem" }}
+      <Container>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+            alignItems: "center",
+            //   border: "2px solid blue",
+          }}
         >
-          New Expense
-        </Button>
-      </Box>
+          <Typography letterSpacing={3} variant="h2" color="secondary.light">
+            All Expenses in a Glance
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            // border: "1px solid green",
+            maxWidth: "1100px",
+            margin: "1rem auto",
+          }}
+        >
+          <Button
+            component={Link}
+            to="/expenses/new"
+            variant="contained"
+            sx={{ marginLeft: "2rem" }}
+          >
+            New Expense
+          </Button>
+        </Box>
 
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        {/* Commenting Staaart */}
-        {/* {expenses.map((expense, pos) => (
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {/* Commenting Staaart */}
+          {/* {expenses.map((expense, pos) => (
           <Card
             sx={{
               width: 875,
@@ -153,97 +154,101 @@ const Expense = () => {
                     </Typography>
                   </Grid> */}
 
-        {/* Commenting Eeeeend */}
+          {/* Commenting Eeeeend */}
 
-        <TableContainer
-          component={Paper}
-          sx={{ maxWidth: "1100px", marginTop: "0.5rem", marginBottom: "4rem" }}
-        >
-          <Table aria-label="Expenses">
-            <TableHead>
-              <TableRow sx={{ bgcolor: "primary.main", color: "#fff" }}>
-                <TableCell sx={{ color: "#fff" }}>Item</TableCell>
-                <TableCell sx={{ color: "#fff" }} align="left">
-                  Amount
-                </TableCell>
-                <TableCell sx={{ color: "#fff" }} align="left">
-                  Date
-                </TableCell>
-                <TableCell sx={{ color: "#fff" }}>Category</TableCell>
-                <TableCell sx={{ color: "#fff" }}>Edit</TableCell>
-                <TableCell sx={{ color: "#fff" }}>Delete</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {expenses.map((expense, pos) => (
-                <TableRow
-                  key={pos}
-                  sx={{
-                    "&:last-child td, &last-child th": { border: 0 },
-                  }}
-                >
-                  <TableCell>
-                    <Typography
-                      color="primary"
-                      variant="subtitle1"
-                      sx={{ fontWeight: "400" }}
-                    >
-                      {expense.item}
-                    </Typography>
+          <TableContainer
+            component={Paper}
+            sx={{
+              maxWidth: "1100px",
+              marginTop: "0.5rem",
+              marginBottom: "4rem",
+            }}
+          >
+            <Table aria-label="Expenses">
+              <TableHead>
+                <TableRow sx={{ bgcolor: "primary.main", color: "#fff" }}>
+                  <TableCell sx={{ color: "#fff" }}>Item</TableCell>
+                  <TableCell sx={{ color: "#fff" }} align="left">
+                    Amount
                   </TableCell>
-                  <TableCell align="left">
-                    <Typography color="secondary" variant="subtitle2">
-                      ${expense.amount}
-                    </Typography>
+                  <TableCell sx={{ color: "#fff" }} align="left">
+                    Date
                   </TableCell>
-                  <TableCell align="left">
-                    <Typography color="primary" variant="p">
-                      {moment.utc(String(expense.date)).format("MM-DD-YYYY")}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography color="secondary.light" variant="p">
-                      {expense.category}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <IconButton
-                      component={Link}
-                      sx={{
-                        "&:hover": {
-                          color: "green",
-                        },
-                      }}
-                      to={`./${expense._id}`}
-                      // href={`expenses/${expense._id}`}
-                    >
-                      {/* <NavLink to={`expenses/${expense._id}`}> */}
-                      {/* <Link to={`./${expense._id}`}> */}
-                      <EditIcon />
-                      {/* </Link> */}
-                      {/* </NavLink> */}
-                    </IconButton>
-                  </TableCell>
-                  <TableCell>
-                    <IconButton
-                      sx={{
-                        "&:hover": { color: "#ee0000" },
-                      }}
-                      onClick={() => {
-                        deleteExpense(expense._id);
-                      }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Category</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Edit</TableCell>
+                  <TableCell sx={{ color: "#fff" }}>Delete</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {expenses.map((expense, pos) => (
+                  <TableRow
+                    key={pos}
+                    sx={{
+                      "&:last-child td, &last-child th": { border: 0 },
+                    }}
+                  >
+                    <TableCell>
+                      <Typography
+                        color="primary"
+                        variant="subtitle1"
+                        sx={{ fontWeight: "400" }}
+                      >
+                        {expense.item}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="left">
+                      <Typography color="secondary" variant="subtitle2">
+                        ${expense.amount}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="left">
+                      <Typography color="primary" variant="p">
+                        {moment.utc(String(expense.date)).format("MM-DD-YYYY")}
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography color="secondary.light" variant="p">
+                        {expense.category}
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <IconButton
+                        component={Link}
+                        sx={{
+                          "&:hover": {
+                            color: "green",
+                          },
+                        }}
+                        to={`./${expense._id}`}
+                        // href={`expenses/${expense._id}`}
+                      >
+                        {/* <NavLink to={`expenses/${expense._id}`}> */}
+                        {/* <Link to={`./${expense._id}`}> */}
+                        <EditIcon />
+                        {/* </Link> */}
+                        {/* </NavLink> */}
+                      </IconButton>
+                    </TableCell>
+                    <TableCell>
+                      <IconButton
+                        sx={{
+                          "&:hover": { color: "#ee0000" },
+                        }}
+                        onClick={() => {
+                          deleteExpense(expense._id);
+                        }}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
-        {/* ======================== */}
-        {/* <Typography color="primary" variant="h4">
+          {/* ======================== */}
+          {/* <Typography color="primary" variant="h4">
                 {expense.item}
               </Typography>
               <Typography color="secondary" variant="h6">
@@ -255,17 +260,18 @@ const Expense = () => {
               <Typography color="secondary.light" variant="h6">
                 {expense.category}
               </Typography> */}
-        {/* ======================= */}
-        {/* </Grid> */}
-        {/* </div> */}
-        {/* </Stack> */}
-        {/* {expense.item} {expense.amount} */}
-        {/* </div> */}
-        {/* </CardContent> */}
-        {/* </Stack> */}
-        {/* </Card> */}
-        {/* ))} */}
-      </Box>
+          {/* ======================= */}
+          {/* </Grid> */}
+          {/* </div> */}
+          {/* </Stack> */}
+          {/* {expense.item} {expense.amount} */}
+          {/* </div> */}
+          {/* </CardContent> */}
+          {/* </Stack> */}
+          {/* </Card> */}
+          {/* ))} */}
+        </Box>
+      </Container>
     </>
   );
 };
