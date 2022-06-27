@@ -24,22 +24,6 @@ const dbURL = process.env.DB_URL || "moongodb://localhost:27017/ExpenseTrackerDB
 
 mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch((error) => console.log(error));
 
-// const myExpense = new Expense({
-//     item: "iPhone",
-//     amount: 1200,
-//     date: new Date()
-// });
-
-// await myExpense.save();
-
-// const newUser = new User({
-//     username: "Sina",
-//     password: "sina123"
-// })
-
-// await newUser.save();
-
-
 
 app.use(cors());
 app.use(express.json());
@@ -59,7 +43,7 @@ app.get('/login', (req, res, next) => {
 // __dirname = path.resolve(path.dirname(''));
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, "client", "build")))
-    app.get('/', (req, res) => {
+    app.get('*', async (req, res) => {
         res.sendFile(path.join(__dirname, "client", "build", "index.html"));
     })
 }
@@ -67,5 +51,6 @@ const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-    console.log(__dirname)
+    console.log(path.join(__dirname, "client", "build", "index.html"));
+    // console.log(__dirname)
 });

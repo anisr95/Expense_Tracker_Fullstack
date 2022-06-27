@@ -1,7 +1,3 @@
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import { Link } from 'react-router-dom';
-import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Expense from './components/Expense/Expense'
