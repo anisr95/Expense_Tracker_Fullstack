@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import App from './App';
+import './App.css'
 import Nav from './components/Nav/Nav';
 import Expense from './components/Expense/Expense'
 import NewExpense from './components/Expense/NewExpense'
@@ -12,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <App className='App' />
     </BrowserRouter>
   </React.StrictMode>,
 );
