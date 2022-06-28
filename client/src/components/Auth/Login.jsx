@@ -51,7 +51,7 @@ const Login = (props) => {
         onClick={() => props.setHaveAccount(false)}
         sx={{ cursor: "pointer", "&:hover": { color: "blue" } }}
       >
-        *Don't have an account? Register Here
+        Don't have an account? Register Here
       </Typography>
       <Button variant="outlined" onClick={loginHandler}>
         Login
