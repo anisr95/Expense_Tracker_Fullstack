@@ -7,6 +7,7 @@ import expensesRoute from './routes/expenses.js'
 import userRoute from './routes/user.js'
 import authRoute from './routes/auth.js'
 import User from './models/User.js'
+import session from 'express-session'
 
 dotenv.config();
 const app = express();
@@ -44,8 +45,11 @@ mongoose.connect(dbURL).then(() => console.log("Mongo Server Connected")).catch(
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(session({secret: "mysecret", resave: false, saveUninitialized: false}))
 // app.use('/', express.static(path.join(__dirname, '/client/build')));
 // app.use(express.bodyParser());
+
+
 
 app.use('/expenses', expensesRoute);
 app.use('/user', userRoute);
@@ -55,6 +59,16 @@ app.use('/auth', authRoute);
 app.get('/login', (req, res, next) => {
     res.send("Login Page");
 })
+
+app.get('/secret', (req, res, next) => {
+    if(req.session.user_id){
+        console.log("Hahaaa");
+        return res.send("This is my secret");
+    }
+    res.send("Sorry no secret for you");
+})
+
+
 
 // __dirname = path.resolve(path.dirname(''));
 if(process.env.NODE_ENV === 'production'){

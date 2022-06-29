@@ -18,7 +18,9 @@ const Login = (props) => {
     // const user = await axios.post("/user/getUser", enteredUser);
     const user = await axios.post("/auth/login", enteredUser);
 
-    console.log("Found User: ", user);
+    if (user) {
+      navigate("/expenses");
+    }
   };
 
   return (
