@@ -1,8 +1,10 @@
-// import express from 'express';
-// import { getUser } from '../controllers/User.js';
+import express from 'express';
+import { getUser, findUserByUsername } from '../controllers/User.js';
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.get('/:id', getUser)
 
-// export default router;
+router.post('/getUser',findUserByUsername)
+router.get('/:id', getUser);
+
+export default router;

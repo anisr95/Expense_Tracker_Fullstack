@@ -33,7 +33,7 @@ const Nav = () => {
                   Expenses
                 </Button>
               </Link> */}
-              <Button component={Link} to="#" color="inherit">
+              <Button component={Link} to="/auth/register" color="inherit">
                 Login
               </Button>
               <Tooltip title="Profile">
