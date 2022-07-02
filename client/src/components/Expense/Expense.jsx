@@ -232,6 +232,15 @@ const Expense = () => {
               </Box>
             )}
           </TableContainer>
+          {userExpenses.length === 0 && (
+            <Typography
+              sx={{ letterSpacing: "0.3rem" }}
+              variant="h4"
+              color="primary.dark"
+            >
+              No Expenses to display
+            </Typography>
+          )}
 
           {/* ======================== */}
           {/* <Typography color="primary" variant="h4">

@@ -13,7 +13,8 @@ const generateToken = (id) => {
 
 export const register = async (req, res, next) => {
     try{
-
+        const existingUser = await User.findOne({username: req.body.username});
+        if(existingUser) throw new Error('User Already Exists');
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
             username: req.body.username,
