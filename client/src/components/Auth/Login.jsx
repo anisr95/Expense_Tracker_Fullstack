@@ -6,6 +6,7 @@ import axios from "axios";
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
   const navigate = useNavigate();
 
@@ -17,6 +18,12 @@ const Login = (props) => {
 
     // const user = await axios.post("/user/getUser", enteredUser);
     const user = await axios.post("/auth/login", enteredUser);
+    console.log("User info: ", user);
+    console.log("User data: ", user.data);
+    setAccessToken(user.data.token);
+    // sessionStorage.setItem("jwt", user.data.token);
+    localStorage.setItem("jwt", user.data.token);
+    localStorage.setItem("username", user.data.user.username);
 
     if (user) {
       navigate("/expenses");

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useRoutes } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   AppBar,
   Button,
@@ -13,6 +14,28 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NavContainer from "../../styles/Nav/Nav.styled";
 
 const Nav = () => {
+  const [userIsSignedIn, setUserIsSignedIn] = useState(false);
+  const [username, setUsername] = useState("");
+
+  const logHandler = () => {
+    if (username !== null) {
+      localStorage.clear();
+      setUserIsSignedIn(false);
+    }
+  };
+
+  const isUserSignedIn = () => {
+    if (localStorage.getItem("username") !== null) {
+      setUserIsSignedIn(true);
+    } else {
+      setUserIsSignedIn(false);
+    }
+  };
+
+  useEffect(() => {
+    isUserSignedIn();
+    setUsername(localStorage.getItem("username"));
+  }, [username]);
   return (
     <>
       <NavContainer>
@@ -33,8 +56,13 @@ const Nav = () => {
                   Expenses
                 </Button>
               </Link> */}
-              <Button component={Link} to="/auth/register" color="inherit">
-                Login
+              <Button
+                component={Link}
+                to="/auth/register"
+                color="inherit"
+                onClick={logHandler}
+              >
+                {userIsSignedIn ? "Logout" : "Login"}
               </Button>
               <Tooltip title="Profile">
                 <IconButton>

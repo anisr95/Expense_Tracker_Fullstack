@@ -25,12 +25,15 @@ const NewExpense = () => {
   const navigate = useNavigate();
 
   const submitHandler = async () => {
+    console.log("Userrrrr: ", localStorage.getItem("username"));
     const newProduct = {
       item,
       amount,
       date,
       category,
+      username: localStorage.getItem("username"),
     };
+
     console.log(typeof date);
 
     console.log("Submiting");
@@ -46,12 +49,20 @@ const NewExpense = () => {
   };
 
   const getCategories = async () => {
-    const expenses = await axios.get("/expenses");
+    const userExpenses = await axios.post(
+      "/expenses/userExpenses",
+      { username: localStorage.getItem("username") },
+      {
+        headers: { authorization: localStorage.getItem("jwt") },
+      }
+    );
+    // const expenses = await axios.get("/expenses");
+    console.log("Useeeeeeee", userExpenses);
     const categories = [];
-    for (let i = 0; i < expenses.data.length; i++) {
+    for (let i = 0; i < userExpenses.data.expenses.length; i++) {
       // console.log("Category #" + i);
-      if (expenses.data[i].category) {
-        categories.push(expenses.data[i].category);
+      if (userExpenses.data.expenses[i].category) {
+        categories.push(userExpenses.data.expenses[i].category);
       }
     }
     const uniqueCategories = [...new Set(categories)];

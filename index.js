@@ -8,6 +8,7 @@ import userRoute from './routes/user.js'
 import authRoute from './routes/auth.js'
 import User from './models/User.js'
 import session from 'express-session'
+import {protect, test} from './middleware/authMiddleware.js';
 
 dotenv.config();
 const app = express();
@@ -56,16 +57,18 @@ app.use('/user', userRoute);
 app.use('/auth', authRoute);
 
 
+
 app.get('/login', (req, res, next) => {
     res.send("Login Page");
 })
 
-app.get('/secret', (req, res, next) => {
-    if(req.session.user_id){
-        console.log("Hahaaa");
-        return res.send("This is my secret");
-    }
-    res.send("Sorry no secret for you");
+app.get('/secret', test, (req, res, next) => {
+    // if(req.session.user_id){
+    //     console.log("Hahaaa");
+    //     return res.send("This is my secret");
+    // }
+    // res.send("Sorry no secret for you");
+    return res.send("Successful");
 })
 
 

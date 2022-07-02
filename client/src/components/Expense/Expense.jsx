@@ -19,6 +19,7 @@ import {
   TableBody,
   IconButton,
   Icon,
+  CircularProgress,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -28,31 +29,57 @@ import Nav from "../Nav/Nav";
 
 const Expense = () => {
   const [expenses, setExpenses] = useState([{}]);
+  const [userExpenses, setUserExpenses] = useState([{}]);
+  const [accessToken, setAccessToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const deleteExpense = async (id) => {
     console.log("Deletiiiing");
     await axios.delete("/expenses/" + id);
-    const filteredExpenses = expenses.filter((expense) => expense._id !== id);
-    setExpenses(filteredExpenses);
+    // const filteredExpenses = expenses.filter((expense) => expense._id !== id);
+    const filteredExpenses = userExpenses.filter(
+      (expense) => expense._id !== id
+    );
+    // setExpenses(filteredExpenses);
+    setUserExpenses(filteredExpenses);
     // window.location.reload();
     // navigate(0);
   };
 
   const getAllExpenses = async () => {
     console.log("I was ran");
-    const expenses = await axios.get("/expenses");
+    const expenses = await axios.get("/expenses", {
+      headers: { authorization: localStorage.getItem("jwt") },
+    });
     setExpenses(expenses.data);
-    console.log(expenses);
+    setIsLoading(false);
+
     console.log(expenses.data);
 
     // return expenses;
   };
 
+  const getUserExpenses = async () => {
+    const userExpenses = await axios.post(
+      "/expenses/userExpenses",
+      { username: localStorage.getItem("username") },
+      {
+        headers: { authorization: localStorage.getItem("jwt") },
+      }
+    );
+    setUserExpenses(userExpenses.data.expenses);
+    setIsLoading(false);
+    console.log("UserExpenses: ", userExpenses);
+  };
+
   useEffect(() => {
+    setIsLoading(true);
     getAllExpenses();
-    console.log("This is useEffect");
+    setAccessToken(localStorage.getItem("jwt"));
+    console.log("This is useEffect 1");
+    getUserExpenses();
     // console.log(expenses);
   }, []);
 
@@ -99,63 +126,6 @@ const Expense = () => {
           justifyContent="center"
           alignItems="center"
         >
-          {/* Commenting Staaart */}
-          {/* {expenses.map((expense, pos) => (
-          <Card
-            sx={{
-              width: 875,
-              margin: "1rem",
-              boxShadow: "0px 0px 5px rgba(0,0,0,0.3)",
-            }}
-            key={pos}
-          >
-            {console.log(expense)}
-            <Stack spacing={6}>
-              <CardContent
-                sx={{
-                  margin: "1rem",
-                  textAlign: "center",
-                }}
-              >
-    
-                <Grid
-                  container
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Grid item xs={12} sm={6} md={4}>
-                    <Typography color="primary" variant="h5">
-                      {expense.item}
-                    </Typography>
-                  </Grid>
-
-                  <Grid item xs={12} sm={6} md={2}>
-                    <Typography color="secondary" variant="h6">
-                      {expense.amount}
-                    </Typography>
-                  </Grid>
-
-                  <Grid item xs={12} sm={6} md={3}>
-                    <Typography color="primary.light" variant="h6">
-                      {moment.utc(String(expense.date)).format("DD-MM-YYYY")}
-                      {console.log(
-                        moment.utc(String(expense.date)).format("DD MM YYYY")
-                      )}
-                      {console.log(expense.date)}
-                    </Typography>
-                  </Grid>
-
-                  <Grid item xs={12} sm={6} md={3}>
-                    <Typography color="secondary.light" variant="h6">
-                      {expense.category}
-                    </Typography>
-                  </Grid> */}
-
-          {/* Commenting Eeeeend */}
-
           <TableContainer
             component={Paper}
             sx={{
@@ -179,72 +149,88 @@ const Expense = () => {
                   <TableCell sx={{ color: "#fff" }}>Delete</TableCell>
                 </TableRow>
               </TableHead>
+
               <TableBody>
-                {expenses.map((expense, pos) => (
-                  <TableRow
-                    key={pos}
-                    sx={{
-                      "&:last-child td, &last-child th": { border: 0 },
-                    }}
-                  >
-                    <TableCell>
-                      <Typography
-                        color="primary"
-                        variant="subtitle1"
-                        sx={{ fontWeight: "400" }}
-                      >
-                        {expense.item}
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="left">
-                      <Typography color="secondary" variant="subtitle2">
-                        ${expense.amount}
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="left">
-                      <Typography color="primary" variant="p">
-                        {moment.utc(String(expense.date)).format("MM-DD-YYYY")}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography color="secondary.light" variant="p">
-                        {expense.category}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <IconButton
-                        component={Link}
-                        sx={{
-                          "&:hover": {
-                            color: "green",
-                          },
-                        }}
-                        to={`./${expense._id}`}
-                        // href={`expenses/${expense._id}`}
-                      >
-                        {/* <NavLink to={`expenses/${expense._id}`}> */}
-                        {/* <Link to={`./${expense._id}`}> */}
-                        <EditIcon />
-                        {/* </Link> */}
-                        {/* </NavLink> */}
-                      </IconButton>
-                    </TableCell>
-                    <TableCell>
-                      <IconButton
-                        sx={{
-                          "&:hover": { color: "#ee0000" },
-                        }}
-                        onClick={() => {
-                          deleteExpense(expense._id);
-                        }}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {!isLoading &&
+                  userExpenses.map((expense, pos) => (
+                    <TableRow
+                      key={pos}
+                      sx={{
+                        "&:last-child td, &last-child th": { border: 0 },
+                      }}
+                    >
+                      <TableCell>
+                        <Typography
+                          color="primary"
+                          variant="subtitle1"
+                          sx={{ fontWeight: "400" }}
+                        >
+                          {expense.item}
+                        </Typography>
+                      </TableCell>
+                      <TableCell align="left">
+                        <Typography color="secondary" variant="subtitle2">
+                          ${expense.amount}
+                        </Typography>
+                      </TableCell>
+                      <TableCell align="left">
+                        <Typography color="primary" variant="p">
+                          {moment
+                            .utc(String(expense.date))
+                            .format("MM-DD-YYYY")}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography color="secondary.light" variant="p">
+                          {expense.category}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <IconButton
+                          component={Link}
+                          sx={{
+                            "&:hover": {
+                              color: "green",
+                            },
+                          }}
+                          to={`./${expense._id}`}
+                          // href={`expenses/${expense._id}`}
+                        >
+                          {/* <NavLink to={`expenses/${expense._id}`}> */}
+                          {/* <Link to={`./${expense._id}`}> */}
+                          <EditIcon />
+                          {/* </Link> */}
+                          {/* </NavLink> */}
+                        </IconButton>
+                      </TableCell>
+                      <TableCell>
+                        <IconButton
+                          sx={{
+                            "&:hover": { color: "#ee0000" },
+                          }}
+                          onClick={() => {
+                            deleteExpense(expense._id);
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
+            {isLoading && (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "1rem 0",
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            )}
           </TableContainer>
 
           {/* ======================== */}
