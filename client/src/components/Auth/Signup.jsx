@@ -7,6 +7,7 @@ const Signup = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [haveAccount, setHaveAccount] = useState(true);
+  const [accessToken, setAccessToken] = useState("");
 
   const navigate = useNavigate();
 
@@ -15,7 +16,13 @@ const Signup = (props) => {
       username,
       password,
     };
-    await axios.post("/auth/register", newUser);
+    const user = await axios.post("/auth/register", newUser);
+
+    console.log("us us us user", user);
+
+    setAccessToken(user.data.token);
+    localStorage.setItem("jwt", user.data.token);
+    localStorage.setItem("username", user.data.newUser.username);
 
     setUsername("");
     setPassword("");

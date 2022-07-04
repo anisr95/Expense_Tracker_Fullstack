@@ -8,7 +8,7 @@ import { Box, Container } from "@mui/system";
 import Signup from "./Signup";
 import Login from "./Login";
 
-const Register = () => {
+const Register = (props) => {
   const [haveAccount, setHaveAccount] = useState(true);
   return (
     <>
@@ -27,7 +27,10 @@ const Register = () => {
           }}
         >
           {haveAccount ? (
-            <Login setHaveAccount={setHaveAccount} />
+            <Login
+              setIsUserLoggedIn={props.setIsUserLoggedIn}
+              setHaveAccount={setHaveAccount}
+            />
           ) : (
             <Signup setHaveAccount={setHaveAccount} />
           )}
