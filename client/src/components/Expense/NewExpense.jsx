@@ -15,7 +15,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import Nav from "../Nav/Nav";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState(null);
   const [date, setDate] = useState("");

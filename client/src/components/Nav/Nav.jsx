@@ -13,29 +13,37 @@ import {
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NavContainer from "../../styles/Nav/Nav.styled";
 
-const Nav = () => {
-  const [userIsSignedIn, setUserIsSignedIn] = useState(false);
-  const [username, setUsername] = useState("");
+const Nav = (props) => {
+  // const [userIsSignedIn, setUserIsSignedIn] = useState(false);
+  const [username, setUsername] = useState(null);
 
   const logHandler = () => {
-    if (username !== null) {
-      localStorage.clear();
-      setUserIsSignedIn(false);
-    }
-  };
-
-  const isUserSignedIn = () => {
+    // props.setUserIsSignedIn(false);
+    // localStorage.clear();
     if (localStorage.getItem("username") !== null) {
-      setUserIsSignedIn(true);
-    } else {
-      setUserIsSignedIn(false);
+      localStorage.clear();
+      props.setIsUserLoggedIn(false);
     }
+    // if (localStorage.getItem("loggedIn") === "true") {
+    //   setUserIsSignedIn(true);
+    // }
   };
 
-  useEffect(() => {
-    isUserSignedIn();
-    setUsername(localStorage.getItem("username"));
-  }, [username]);
+  // const isUserSignedIn = () => {
+  //   if (localStorage.getItem("username") !== null) {
+  //     props.setUserIsSignedIn(true);
+  //   } else {
+  //     props.setUserIsSignedIn(false);
+  //   }
+  // if (localStorage.getItem("loggedIn") === "true") {
+  //   setUserIsSignedIn(true);
+  // }
+  // };
+
+  // useEffect(() => {
+  //   isUserSignedIn();
+
+  // }, []);
   return (
     <>
       <NavContainer>
@@ -62,7 +70,9 @@ const Nav = () => {
                 color="inherit"
                 onClick={logHandler}
               >
-                {userIsSignedIn ? "Logout" : "Login"}
+                {props.isUserLoggedIn && "Logout"}
+                {console.log("Servise kard: ", props.isUserLoggedIn)}
+                {!props.isUserLoggedIn && "Login"}
               </Button>
               <Tooltip title="Profile">
                 <IconButton>
