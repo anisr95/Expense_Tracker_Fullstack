@@ -71,6 +71,19 @@ app.get('/secret', test, (req, res, next) => {
     return res.send("Successful");
 })
 
+app.use((err, req, res, next) => {
+    console.log("This is error in Err Handler", err);
+    console.log("***************************")
+    console.dir(err.message);
+    console.dir(err.statusCode);
+    console.log("***************************")
+    // res.status(400).json("My Jsooooon");
+    res.statusCode(404).json("Lalalala");
+    // res.json("My Json File")
+    // res.json(err);
+    // console.dir(err);
+})
+
 
 
 // __dirname = path.resolve(path.dirname(''));

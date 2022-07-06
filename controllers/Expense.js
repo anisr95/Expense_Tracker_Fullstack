@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Expense from "../models/Expense.js";
 import User from "../models/User.js";
+import ExpressError from "../utils/ExpressError.js";
 
 export const getAllExpenses = async (req, res, next) => {
     try {
@@ -18,6 +19,8 @@ export const getUserExpenses = async (req, res, next) => {
         if(!username) throw new Error('Please login first');
         const user = await User.findOne({username}).populate('expenses');
         if(!user) throw new Error('User not found');
+        
+
         console.log(user);
         // const expenses = user.populate('expenses');
         res.status(200).json(user);

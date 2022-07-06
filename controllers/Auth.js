@@ -1,6 +1,7 @@
 import User from '../models/User.js'
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import ExpressError from '../utils/ExpressError.js';
 
 
 // export const regiterNewUser = async (req, res, next) {
@@ -14,7 +15,9 @@ const generateToken = (id) => {
 export const register = async (req, res, next) => {
     try{
         const existingUser = await User.findOne({username: req.body.username});
-        if(existingUser) throw new Error('User Already Exists');
+        // if(existingUser) throw new Error('User Already Exists');
+        if(existingUser) throw new ExpressError('User Already Exists', 404);
+
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
             username: req.body.username,
