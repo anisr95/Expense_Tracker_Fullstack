@@ -78,7 +78,7 @@ app.use((err, req, res, next) => {
     console.dir(err.statusCode);
     console.log("***************************")
     // res.status(400).json("My Jsooooon");
-    res.statusCode(404).json("Lalalala");
+    // res.statusCode(404).json("Lalalala");
     // res.json("My Json File")
     // res.json(err);
     // console.dir(err);
