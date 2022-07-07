@@ -35,6 +35,13 @@ const Login = (props) => {
       }, 4000);
     });
 
+    // setAccessToken(user.data.token);
+    localStorage.setItem("jwt", user.data.token);
+    localStorage.setItem("username", user.data.user.username);
+    localStorage.setItem("loggedIn", "true");
+
+    props.setIsUserLoggedIn(true);
+
     if (user) {
       navigate("/expenses");
     } else {
