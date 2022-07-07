@@ -20,7 +20,7 @@ const Register = (props) => {
             flexDirection: "column",
             // border: "2px solid red",
             maxWidth: "600px",
-            minWidth: "400px",
+            minWidth: "330px",
             alignItems: "center",
             margin: "3rem auto",
             padding: "2rem",

@@ -87,8 +87,7 @@ const Expense = () => {
     <>
       {/* <Nav /> */}
       {accessToken ? (
-        <Container>
-          (
+        <Container align="center">
           <Box
             sx={{
               display: "flex",
