@@ -97,8 +97,13 @@ const Expense = () => {
               //   border: "2px solid blue",
             }}
           >
-            <Typography letterSpacing={3} variant="h2" color="secondary.light">
-              All Expenses in a Glance
+            <Typography
+              className="title"
+              letterSpacing={3}
+              variant="h2"
+              color="secondary.light"
+            >
+              All Expenses
             </Typography>
           </Box>
           <Box
