@@ -16,11 +16,11 @@ const Register = (props) => {
         <Stack
           spacing={2}
           sx={{
-            margin: "2rem",
             display: "flex",
             flexDirection: "column",
             // border: "2px solid red",
-            width: "600px",
+            maxWidth: "600px",
+            minWidth: "400px",
             alignItems: "center",
             margin: "3rem auto",
             padding: "2rem",
