@@ -32,7 +32,10 @@ const Register = (props) => {
               setHaveAccount={setHaveAccount}
             />
           ) : (
-            <Signup setHaveAccount={setHaveAccount} />
+            <Signup
+              setIsUserLoggedIn={props.setIsUserLoggedIn}
+              setHaveAccount={setHaveAccount}
+            />
           )}
         </Stack>
       </Container>

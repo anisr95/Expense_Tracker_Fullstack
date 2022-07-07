@@ -23,10 +23,16 @@ const Signup = (props) => {
     setAccessToken(user.data.token);
     localStorage.setItem("jwt", user.data.token);
     localStorage.setItem("username", user.data.newUser.username);
+    localStorage.setItem("loggedIn", "true");
 
+    props.setIsUserLoggedIn(true);
+
+    if (user) {
+      console.log("did I ran?");
+      navigate("/expenses");
+    }
     setUsername("");
     setPassword("");
-    navigate("/expenses");
   };
 
   return (
