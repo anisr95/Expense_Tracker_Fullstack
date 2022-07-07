@@ -50,11 +50,7 @@ const Nav = (props) => {
   return (
     <>
       <NavContainer>
-<<<<<<< HEAD
-        <Box minWidth="400px">
-=======
         <Box minWidth="390px">
->>>>>>> master
           <AppBar position="sticky">
             <Toolbar>
               <Typography variant="h5" sx={{ flexGrow: 1 }}>

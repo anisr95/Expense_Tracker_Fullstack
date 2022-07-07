@@ -278,11 +278,6 @@ const Expense = () => {
           justifyContent="center"
           alignItems="center"
           align="center"
-<<<<<<< HEAD
-          width="400px"
-          // sx={{ border: "2px solid red" }}
-=======
->>>>>>> master
         >
           <Box
             minWidth="400px"
@@ -292,11 +287,8 @@ const Expense = () => {
               marginTop: "15rem",
               alignItems: "center",
               flexDirection: "column",
-<<<<<<< HEAD
-=======
 
               //   border: "2px solid blue",
->>>>>>> master
             }}
           >
             <Typography
