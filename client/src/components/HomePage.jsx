@@ -12,6 +12,7 @@ const HomePage = () => {
           justifyContent: "center",
           marginLeft: "3rem",
           marginTop: "2rem",
+          maxWidth: "700px",
         }}
       >
         <Typography className="title" variant="h2" color="primary" gutterBottom>
