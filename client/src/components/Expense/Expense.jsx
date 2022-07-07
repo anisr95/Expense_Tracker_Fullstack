@@ -297,7 +297,7 @@ const Expense = () => {
               marginTop="3rem"
               marginBottom="2rem"
             >
-              You must Login first
+              You Must Login First
             </Typography>
             <Button
               component={Link}
