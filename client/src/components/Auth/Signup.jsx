@@ -99,6 +99,7 @@ const Signup = (props) => {
       <SnackbarCustom
         onClick={() => setShowError(false)}
         open={showError}
+        type="error"
         errorMessage={errorMessage}
       />
     </>

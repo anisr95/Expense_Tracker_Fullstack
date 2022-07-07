@@ -16,7 +16,7 @@ export const register = async (req, res, next) => {
     try{
         const existingUser = await User.findOne({username: req.body.username});
         // if(existingUser) throw new Error('User Already Exists');
-        if(existingUser) throw new ExpressError('User Already Exists', 404);
+        if(existingUser) throw new ExpressError('User Already Exists. Username MUST be unique', 404);
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
