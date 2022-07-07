@@ -269,7 +269,12 @@ const Expense = () => {
           </Box>
         </Container>
       ) : (
-        <Container display="flex" justifyContent="center" alignItems="center">
+        <Container
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          align="center"
+        >
           <Box
             sx={{
               display: "flex",
@@ -277,6 +282,7 @@ const Expense = () => {
               marginTop: "15rem",
               alignItems: "center",
               flexDirection: "column",
+
               //   border: "2px solid blue",
             }}
           >
