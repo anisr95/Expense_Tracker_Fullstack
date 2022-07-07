@@ -88,6 +88,7 @@ const Expense = () => {
       {/* <Nav /> */}
       {accessToken ? (
         <Container>
+          (
           <Box
             sx={{
               display: "flex",
@@ -268,15 +269,22 @@ const Expense = () => {
           </Box>
         </Container>
       ) : (
-        <Container display="flex" justifyContent="center" alignItems="center">
+        <Container
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          align="center"
+          width="400px"
+          // sx={{ border: "2px solid red" }}
+        >
           <Box
+            minWidth="400px"
             sx={{
               display: "flex",
               justifyContent: "center",
               marginTop: "15rem",
               alignItems: "center",
               flexDirection: "column",
-              //   border: "2px solid blue",
             }}
           >
             <Typography
