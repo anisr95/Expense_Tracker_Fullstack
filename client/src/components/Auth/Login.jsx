@@ -34,49 +34,49 @@ const Login = (props) => {
   return (
     <>
       {/* <Box display="flex" flexDirection="column"> */}
-      <Container maxWidth="sm" sx={{ border: "2px solid red" }}>
-        <Stack
-          spacing={2}
-          flex
-          justifyContent="center"
-          alignItems="center"
-          maxWidth="600px"
-        >
-          <Typography
-            variant="h3"
-            color="primary.light"
-            sx={{ letterSpacing: "4px" }}
-          >
-            Login
-          </Typography>
-          <TextField
-            variant="outlined"
-            label="Username"
-            fullWidth
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-          <TextField
-            type="password"
-            variant="outlined"
-            label="Password"
-            fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Typography
-            variant="p"
-            color="primary.light"
-            onClick={() => props.setHaveAccount(false)}
-            sx={{ cursor: "pointer", "&:hover": { color: "blue" } }}
-          >
-            Don't have an account? Register Here
-          </Typography>
-          <Button variant="outlined" onClick={loginHandler}>
-            Login
-          </Button>
-        </Stack>
-      </Container>
+      {/* <Container maxWidth="sm"> */}
+      {/* <Stack
+        spacing={2}
+        flex
+        justifyContent="center"
+        alignItems="center"
+        // maxWidth="600px"
+      > */}
+      <Typography
+        variant="h3"
+        color="primary.light"
+        sx={{ letterSpacing: "4px" }}
+      >
+        Login
+      </Typography>
+      <TextField
+        variant="outlined"
+        label="Username"
+        fullWidth
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+      />
+      <TextField
+        type="password"
+        variant="outlined"
+        label="Password"
+        fullWidth
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Typography
+        variant="p"
+        color="primary.light"
+        onClick={() => props.setHaveAccount(false)}
+        sx={{ cursor: "pointer", "&:hover": { color: "blue" } }}
+      >
+        Don't have an account? Register Here
+      </Typography>
+      <Button variant="outlined" onClick={loginHandler}>
+        Login
+      </Button>
+      {/* </Stack> */}
+      {/* </Container> */}
       {/* </Box> */}
     </>
   );

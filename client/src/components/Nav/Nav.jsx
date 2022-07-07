@@ -47,7 +47,7 @@ const Nav = (props) => {
   return (
     <>
       <NavContainer>
-        <Box>
+        <Box minWidth="400px">
           <AppBar position="sticky">
             <Toolbar>
               <Typography variant="h5" sx={{ flexGrow: 1 }}>
