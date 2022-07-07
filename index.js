@@ -77,9 +77,9 @@ app.use((err, req, res, next) => {
     console.dir(err.message);
     console.dir(err.statusCode);
     console.log("***************************")
-    // res.status(400).json("My Jsooooon");
-    // res.statusCode(404).json("Lalalala");
-    // res.json("My Json File")
+    res.status(err.statusCode).json(err.message);
+    // res.statusCode(err.statusCode).json(err.message);
+    // res.json(err.message)
     // res.json(err);
     // console.dir(err);
 })

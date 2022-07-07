@@ -28,6 +28,8 @@ const Login = (props) => {
 
     if (user) {
       navigate("/expenses");
+    } else {
+      console.log("This error is from Login: ", user);
     }
   };
 
