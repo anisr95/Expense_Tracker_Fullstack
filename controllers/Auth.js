@@ -37,7 +37,10 @@ export const login = async (req, res, next) => {
     try {
         const {username, password} = req.body;
         const user = await User.findOne({username: username})
+        if(!user) throw new ExpressError("User not found", 404);
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+        if(!isPasswordCorrect) throw new ExpressError("Incorrect Password", 401)
         // console.log("In Login Request: ", req.headers);
         
         if(isPasswordCorrect){

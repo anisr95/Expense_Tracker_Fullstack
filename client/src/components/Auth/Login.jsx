@@ -9,11 +9,14 @@ import {
 import React, { useState } from "react";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import SnackbarCustom from "../Utils/SnackbarCustom";
 // import { Container } from "@mui/system";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,7 +27,13 @@ const Login = (props) => {
     };
 
     // const user = await axios.post("/user/getUser", enteredUser);
-    const user = await axios.post("/auth/login", enteredUser);
+    const user = await axios.post("/auth/login", enteredUser).catch((err) => {
+      setErrorMessage(err.response.data);
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 4000);
+    });
 
     if (user) {
       navigate("/expenses");
@@ -80,6 +89,13 @@ const Login = (props) => {
       {/* </Stack> */}
       {/* </Container> */}
       {/* </Box> */}
+
+      <SnackbarCustom
+        onClick={() => setShowError(false)}
+        open={showError}
+        type="error"
+        errorMessage={errorMessage}
+      />
     </>
   );
 };

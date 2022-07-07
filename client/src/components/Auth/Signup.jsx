@@ -24,6 +24,9 @@ const Signup = (props) => {
       setErrorMessage(err.response.data);
       console.log("This is the error message: ", errorMessage);
       setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 4000);
       // openToast();
     });
 
