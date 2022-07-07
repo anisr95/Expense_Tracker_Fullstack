@@ -22,6 +22,7 @@ const Nav = (props) => {
     // localStorage.clear();
     if (localStorage.getItem("username") !== null) {
       localStorage.clear();
+      setUsername("");
       props.setIsUserLoggedIn(false);
     }
     // if (localStorage.getItem("loggedIn") === "true") {
@@ -39,15 +40,21 @@ const Nav = (props) => {
   //   setUserIsSignedIn(true);
   // }
   // };
+  const getUsername = () => {
+    setUsername(localStorage.getItem("username"));
+  };
 
-  // useEffect(() => {
-  //   isUserSignedIn();
-
-  // }, []);
+  useEffect(() => {
+    getUsername();
+  }, [getUsername]);
   return (
     <>
       <NavContainer>
+<<<<<<< HEAD
         <Box minWidth="400px">
+=======
+        <Box minWidth="390px">
+>>>>>>> master
           <AppBar position="sticky">
             <Toolbar>
               <Typography variant="h5" sx={{ flexGrow: 1 }}>
@@ -74,11 +81,18 @@ const Nav = (props) => {
                 {console.log("Servise kard: ", props.isUserLoggedIn)}
                 {!props.isUserLoggedIn && "Login"}
               </Button>
-              <Tooltip title="Profile">
+              {/* <Tooltip title="Profile">
                 <IconButton>
                   <AccountCircleIcon sx={{ color: "white" }} />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
+              {username ? (
+                <Typography variant="h6" marginLeft="1rem" color="#f9b6ff">
+                  Hello, {username}
+                </Typography>
+              ) : (
+                ""
+              )}
             </Toolbar>
           </AppBar>
         </Box>

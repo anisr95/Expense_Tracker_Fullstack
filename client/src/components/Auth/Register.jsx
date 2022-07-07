@@ -16,12 +16,19 @@ const Register = (props) => {
         <Stack
           spacing={2}
           sx={{
+<<<<<<< HEAD
             // margin: "2rem",
+=======
+>>>>>>> master
             display: "flex",
             flexDirection: "column",
             // border: "2px solid red",
             maxWidth: "600px",
+<<<<<<< HEAD
             minWidth: "300px",
+=======
+            minWidth: "330px",
+>>>>>>> master
             alignItems: "center",
             margin: "3rem auto",
             padding: "2rem",
@@ -33,7 +40,10 @@ const Register = (props) => {
               setHaveAccount={setHaveAccount}
             />
           ) : (
-            <Signup setHaveAccount={setHaveAccount} />
+            <Signup
+              setIsUserLoggedIn={props.setIsUserLoggedIn}
+              setHaveAccount={setHaveAccount}
+            />
           )}
         </Stack>
       </Container>

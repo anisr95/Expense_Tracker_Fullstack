@@ -87,8 +87,7 @@ const Expense = () => {
     <>
       {/* <Nav /> */}
       {accessToken ? (
-        <Container>
-          (
+        <Container align="center">
           <Box
             sx={{
               display: "flex",
@@ -98,8 +97,13 @@ const Expense = () => {
               //   border: "2px solid blue",
             }}
           >
-            <Typography letterSpacing={3} variant="h2" color="secondary.light">
-              All Expenses in a Glance
+            <Typography
+              className="title"
+              letterSpacing={3}
+              variant="h2"
+              color="secondary.light"
+            >
+              All Expenses
             </Typography>
           </Box>
           <Box
@@ -274,8 +278,11 @@ const Expense = () => {
           justifyContent="center"
           alignItems="center"
           align="center"
+<<<<<<< HEAD
           width="400px"
           // sx={{ border: "2px solid red" }}
+=======
+>>>>>>> master
         >
           <Box
             minWidth="400px"
@@ -285,6 +292,11 @@ const Expense = () => {
               marginTop: "15rem",
               alignItems: "center",
               flexDirection: "column",
+<<<<<<< HEAD
+=======
+
+              //   border: "2px solid blue",
+>>>>>>> master
             }}
           >
             <Typography
@@ -294,7 +306,7 @@ const Expense = () => {
               marginTop="3rem"
               marginBottom="2rem"
             >
-              You must Login first
+              You Must Login First
             </Typography>
             <Button
               component={Link}

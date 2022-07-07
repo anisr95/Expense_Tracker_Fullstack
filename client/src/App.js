@@ -6,6 +6,35 @@ import NewExpense from './components/Expense/NewExpense'
 import EditExpense from './components/Expense/EditExpense'
 import HomePage from './components/HomePage';
 import Register from './components/Auth/Register';
+import { colors, createTheme, rgbToHex, ThemeProvider } from '@mui/material';
+
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Poppins',
+      'Gentium Book Plus',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+  palette: {
+    primary: {
+      main: colors.blue[600]
+    },
+    secondary:{
+      main: colors.purple[400],
+    }
+  }
+});
 
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -21,7 +50,8 @@ function App() {
     userLoggedStatus();
   }, [isUserLoggedIn])
   return (
-    <>     
+    <>
+    <ThemeProvider theme={theme}>   
     <Nav setIsUserLoggedIn={setIsUserLoggedIn} isUserLoggedIn={isUserLoggedIn} />
   <Routes>
     <Route path='/' element={<HomePage />}/>
@@ -30,6 +60,7 @@ function App() {
     <Route path='/expenses' element={<Expense />} />
     <Route path='/expenses/new' element={<NewExpense setIsUserLoggedIn={setIsUserLoggedIn} />} />
   </Routes>
+  </ThemeProvider>  
   </>
   );
 }

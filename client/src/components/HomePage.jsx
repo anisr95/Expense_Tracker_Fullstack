@@ -12,12 +12,13 @@ const HomePage = () => {
           justifyContent: "center",
           marginLeft: "3rem",
           marginTop: "2rem",
+          maxWidth: "700px",
         }}
       >
-        <Typography variant="h2" color="primary" gutterBottom>
+        <Typography className="title" variant="h2" color="primary" gutterBottom>
           Expense Tracker Project
         </Typography>
-        <Typography variant="h6" color="secondary">
+        <Typography className="title" variant="h6" color="secondary">
           This is a CRUD (Create, Read, Update, Delete) app, built using MERN
           stack (MongoDB, Express, React, and Node)
         </Typography>
