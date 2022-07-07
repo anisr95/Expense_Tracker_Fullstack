@@ -18,6 +18,8 @@ export const register = async (req, res, next) => {
         // if(existingUser) throw new Error('User Already Exists');
         if(existingUser) throw new ExpressError('User Already Exists. Username MUST be unique', 404);
 
+        if(req.body.password.length === 0) throw new ExpressError("Password can not be empty", 400);
+
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
             username: req.body.username,
@@ -38,6 +40,8 @@ export const login = async (req, res, next) => {
         const {username, password} = req.body;
         const user = await User.findOne({username: username})
         if(!user) throw new ExpressError("User not found", 404);
+        if(password.length === 0) throw new ExpressError("Password can not be empty", 400);
+        
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
         if(!isPasswordCorrect) throw new ExpressError("Incorrect Password", 401)
