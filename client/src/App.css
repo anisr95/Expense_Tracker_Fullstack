@@ -7,8 +7,37 @@
     
 }
 
+body{
+    /* background-color: rgba(0,0,0,0.8); */
+}
 
-h2.title, h6.title, p.title{
+
+h2.title, h6.title, h3.title p.title{
     font-family: 'Gentium Book Plus', serif;
     font-family: 'Poppins', sans-serif;
+    
+}
+
+.bg{
+    height: 100vh;
+    border: 2px solid red;
+    /* background-image: url("${bgImage}"); */
+    background-position: top center;
+    background-size: cover;
+    filter: blur(4px);
+    transform: scaleX(-1);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.content{
+    position: fixed;
+    margin-top: 5rem;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    
 }
