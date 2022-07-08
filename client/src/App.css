@@ -34,7 +34,7 @@ h2.title, h6.title, h3.title p.title{
 }
 
 .content{
-    position: fixed;
+    position: relative;
     margin-top: 5rem;
     z-index: 10;
     top: 0;

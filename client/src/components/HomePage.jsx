@@ -93,6 +93,7 @@ const HomePage = () => {
                 to="/auth/register"
                 sx={{
                   marginTop: "1rem",
+                  marginBottom: "2rem",
                   padding: "0.6rem 4rem",
                 }}
                 // large
