@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Stack, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import bgImage from "../assets/expenseTracker.jpeg";
@@ -9,6 +9,18 @@ import nodeIcon from "../assets/nodeIcon.png";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const userLoginStatus = () => {
+    if (localStorage.getItem("jwt")) {
+      setIsUserLoggedIn(true);
+    }
+  };
+
+  useEffect(() => {
+    userLoginStatus();
+  }, []);
+
   return (
     <div>
       {/* <Box
@@ -70,19 +82,26 @@ const HomePage = () => {
               <img src={nodeIcon} alt="node Icon" width="80px" />
               <Typography variant="h5"> Node</Typography>
             </Stack>
-            <Typography color="primary.dark" variant="h6">
-              Start by Loggin in
-            </Typography>
           </Stack>
-          <Button
-            component={Link}
-            to="/auth/register"
-            sx={{ marginTop: "1rem", padding: "0.6rem 4rem" }}
-            large
-            variant="contained"
-          >
-            Login
-          </Button>
+          {!isUserLoggedIn && (
+            <Stack sx={{ marginTop: "2rem", width: "200px" }}>
+              <Typography color="primary.dark" variant="h6">
+                Start by Loggin in
+              </Typography>
+              <Button
+                component={Link}
+                to="/auth/register"
+                sx={{
+                  marginTop: "1rem",
+                  padding: "0.6rem 4rem",
+                }}
+                // large
+                variant="contained"
+              >
+                Login
+              </Button>
+            </Stack>
+          )}
         </Container>
       </Box>
     </div>
